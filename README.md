@@ -34,7 +34,7 @@ The baseline parameters are $S_0=K=100$, $T=1$, $r=5\%$ and $\sigma=20\%$. Asset
 Hedging performance is evaluated using the mean, standard deviation and root mean squared error of terminal P&L across $M$ simulated paths:
 
 $$
-\widehat{\operatorname{RMSE}}=\sqrt{\frac{1}{M}\sum_{i=1}^{M}(\varepsilon_T^{(i)})^2}.
+\widehat{\mathrm{RMSE}}=\sqrt{\frac{1}{M}\sum_{i=1}^{M}(\varepsilon_T^{(i)})^2}.
 $$
 
 At the population level,
