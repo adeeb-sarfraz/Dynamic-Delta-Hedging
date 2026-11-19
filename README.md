@@ -40,7 +40,7 @@ $$
 At the population level,
 
 $$
-\operatorname{RMSE}^2=\operatorname{Var}(\varepsilon_T)+\big(\mathbb{E}[\varepsilon_T]\big)^2.
+\mathrm{RMSE}^2=\mathrm{Var}(\varepsilon_T)+\big(\mathbb{E}[\varepsilon_T]\big)^2.
 $$
 
 RMSE therefore captures both the dispersion of hedging outcomes and systematic deviations from zero P&L.
@@ -67,7 +67,7 @@ Across 1,000,000 simulated paths with 100 rebalancing intervals and no transacti
 | 252 | 0.4376 |
 | 1,000 | 0.2212 |
 
-Increasing the number of intervals from 12 to 252 reduced RMSE by 77.2%. A log-log fit across all eight tested frequencies gives a slope of approximately -0.487, consistent with $\operatorname{RMSE}\propto n^{-1/2}$.
+Increasing the number of intervals from 12 to 252 reduced RMSE by 77.2%. A log-log fit across all eight tested frequencies gives a slope of approximately -0.487, consistent with $\mathrm{RMSE}\propto n^{-1/2}$.
 
 ![Hedging error convergence](figures/rebalancing_frequency.png)
 
