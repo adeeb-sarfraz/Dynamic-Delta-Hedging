@@ -88,28 +88,40 @@ At 10 bps, RMSE is minimised at 192 intervals, compared with 33 at 50 bps. Witho
 
 ![Hedging error with transaction costs](figures/transaction_costs.png)
 
+
 ### Volatility Misspecification
 
 Pricing and hedging volatility are fixed at 20%, while realised volatility is varied.
 
-| Realised volatility | Mean P&L ($n=12$) | Std. dev. ($n=12$) | Mean P&L ($n=252$) | Std. dev. ($n=252$) |
-|---:|---:|---:|---:|---:|
-| 10% | 3.838 | 1.394 | 3.832 | 1.076 |
-| 20% | 0.007 | 1.925 | 0.001 | 0.437 |
-| 30% | -3.979 | 3.421 | -3.968 | 1.923 |
+Under risk-neutral GBM and frictionless, self-financing hedging, the expected terminal P&L is
 
-For the short call, overestimating volatility produces positive mean P&L, while underestimating volatility produces negative mean P&L. More frequent hedging reduces P&L dispersion but has little effect on the mean P&L arising from volatility mismatch.
+$$
+\mathbb{E}^{\mathbb{Q}}[\varepsilon_T]
+=e^{rT}\left[C_{\mathrm{BS}}(\sigma_h)-C_{\mathrm{BS}}(\sigma_r)\right].
+$$
 
-![Mean P&L under volatility misspecification](figures/volatility_mean_pnl.png)
+This expectation is independent of rebalancing frequency.
+
+| Realised volatility | Analytical mean | Mean P&L ($n=12$) | Std. dev. ($n=12$) | Mean P&L ($n=252$) | Std. dev. ($n=252$) |
+|---:|---:|---:|---:|---:|---:|
+| 10% | 3.8325 | 3.838 | 1.394 | 3.832 | 1.076 |
+| 20% | 0.0000 | 0.007 | 1.925 | 0.001 | 0.437 |
+| 30% | -3.9745 | -3.979 | 3.421 | -3.968 | 1.923 |
+
+The simulated mean P&L closely agrees with the analytical expectation. Increasing rebalancing frequency reduces the dispersion of terminal P&L but does not eliminate the systematic gains or losses arising from volatility misspecification. The dispersion graph illustrates this reduction in hedging risk across different realised volatilities.
+
+![Hedging P&L dispersion under volatility misspecification](figures/volatility_std.png)
+
 
 These results are specific to the simulated GBM framework and parameter choices; they are not estimates of historical or live trading performance.
 
 ## Installation and Usage
 
-The notebooks use Python, NumPy, SciPy and Matplotlib. From the repository root, install the dependencies:
+The notebooks require Python with NumPy, SciPy and Matplotlib. Install the dependencies from the repository root:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
 Open the notebooks in VS Code or Jupyter and select the Python environment containing the dependencies. Run each notebook from its containing directory to preserve the relative figure export paths.
+
